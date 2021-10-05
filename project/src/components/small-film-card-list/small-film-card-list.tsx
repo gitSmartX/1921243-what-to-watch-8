@@ -1,8 +1,5 @@
+import type { FilmTitleList } from '../../types/types';
 import SmallFilmCard from '../small-film-card/small-film-card';
-
-type FilmTitleList = {
-  filmTitleList: string[];
-}
 
 function SmallFilmCardList({filmTitleList}: FilmTitleList): JSX.Element{
   const listItems = filmTitleList.map((title) =>

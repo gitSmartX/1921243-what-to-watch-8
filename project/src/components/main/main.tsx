@@ -1,34 +1,11 @@
 import React from 'react';
+import Logo from '../logo/logo';
 import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
-
-const FILM_TITLES: string[] = [
-  'Fantastic Beasts: The Crimes of Grindelwald',
-  'Bohemian Rhapsody',
-  'Macbeth',
-  'Aviator',
-  'We need to talk about Kevin',
-  'What We Do in the Shadows',
-  'Revenant',
-  'Johnny English',
-  'Shutter Island',
-  'Pulp Fiction',
-  'No Country for Old Men',
-  'Snatch',
-  'Moonrise Kingdom',
-  'Seven Years in Tibet',
-  'Midnight Special',
-  'War of the Worlds',
-  'Dardjeeling Limited',
-  'Orlando',
-  'Mindhunter',
-  'Midnight Special',
-];
-
-type FilmCardDate = {
-  title: string,
-  genre: string,
-  year: number,
-}
+import type {FilmCardDate} from '../../types/types';
+import { CATALOG_GENRES_LIST, FILM_TITLES } from '../app/constant';
+import UserBlock from '../user-block/user-block';
+import CatalogGenresList from '../catalog-genres-list/catalog-genres-list';
+import Footer from '../footer/footer';
 
 function Main(props:any): JSX.Element{
   // eslint-disable-next-line no-console
@@ -43,24 +20,8 @@ function Main(props:any): JSX.Element{
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
-            </li>
-          </ul>
+          <Logo />
+          <UserBlock />
         </header>
 
         <div className="film-card__wrap">
@@ -98,38 +59,7 @@ function Main(props:any): JSX.Element{
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
-            </li>
-          </ul>
+          <CatalogGenresList catalogGenresList = {CATALOG_GENRES_LIST} />
 
           <SmallFilmCardList filmTitleList = {FILM_TITLES}/>
 
@@ -138,19 +68,7 @@ function Main(props:any): JSX.Element{
           </div>
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     </React.Fragment>
   );
