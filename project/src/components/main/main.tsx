@@ -61,7 +61,7 @@ function Main(props:any): JSX.Element{
 
           <CatalogGenresList genresList = {CATALOG_GENRES_LIST} />
 
-          <SmallFilmCardList filmTitleList = {FILM_TITLES}/>
+          <SmallFilmCardList filmCardPropsList = {FILM_TITLES}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

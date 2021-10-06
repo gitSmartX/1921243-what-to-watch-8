@@ -10,8 +10,8 @@ type FilmCardProps = {
   filmTitle: string;
 }
 
-type FilmTitleList = {
-  filmTitleList: string[];
+type FilmCardPropsList = {
+  filmCardProps: FilmCardProps[];
 }
 
 type Genre = {
@@ -25,4 +25,4 @@ type GenresList = {
 
 type PrivateRouteProps = RouteProps & {isAccess?: boolean};
 
-export type {FilmCardDate, FilmCardProps, FilmTitleList, Genre, GenresList, PrivateRouteProps};
+export type {FilmCardDate, FilmCardProps, FilmCardPropsList, Genre, GenresList, PrivateRouteProps};
