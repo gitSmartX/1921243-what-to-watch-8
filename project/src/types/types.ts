@@ -11,7 +11,7 @@ type FilmCardProps = {
 }
 
 type FilmCardPropsList = {
-  filmCardProps: FilmCardProps[];
+  filmCardPropsList: FilmCardProps[];
 }
 
 type Genre = {
