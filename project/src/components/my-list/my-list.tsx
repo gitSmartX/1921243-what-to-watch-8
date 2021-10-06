@@ -1,28 +1,12 @@
+import { MY_FILMS } from '../../constants/constant';
+import Logo from '../logo/logo';
 import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
-
-const FILM_TITLES: string[] = [
-  'Fantastic Beasts: The Crimes of Grindelwald',
-  'Bohemian Rhapsody',
-  'Macbeth',
-  'Aviator',
-  'We need to talk about Kevin',
-  'What We Do in the Shadows',
-  'Revenant',
-  'Johnny English',
-  'Shutter Island',
-];
 
 function MyList(): JSX.Element {
   return(
     <div className="user-page">
       <header className="page-header user-page__head">
-        <div className="logo">
-          <a href="main.html" className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
+        <Logo />
 
         <h1 className="page-title user-page__title">My list</h1>
 
@@ -41,7 +25,7 @@ function MyList(): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <SmallFilmCardList filmTitleList = {FILM_TITLES}/>
+        <SmallFilmCardList filmCardPropsList= {MY_FILMS}/>
       </section>
 
       <footer className="page-footer">

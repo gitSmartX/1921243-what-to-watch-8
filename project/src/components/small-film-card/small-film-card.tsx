@@ -1,11 +1,6 @@
-type FilmCardProps = {
-  filmTitle: string;
-}
+import { FilmCardProps } from '../../types/types';
+import { IMAGE_DATA } from '../../constants/constant';
 
-enum IMAGE_DATA {
-  imgSource = 'img/',
-  imgType = '.jpg',
-}
 
 function SmallFilmCard({filmTitle}: FilmCardProps): JSX.Element{
   return(

@@ -1,13 +1,9 @@
 import React from 'react';
+import { FILM_TITLES } from '../../constants/constant';
 import Footer from '../footer/footer';
+import Logo from '../logo/logo';
 import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
-
-const FILM_TITLES: string[] = [
-  'Fantastic Beasts: The Crimes of Grindelwald',
-  'Bohemian Rhapsody',
-  'Macbeth',
-  'Aviator',
-];
+import UserBlock from '../user-block/user-block';
 
 function MoviePageDetails(): JSX.Element{
   return(
@@ -21,24 +17,8 @@ function MoviePageDetails(): JSX.Element{
           <h1 className="visually-hidden">WTW</h1>
 
           <header className="page-header film-card__head">
-            <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <ul className="user-block">
-              <li className="user-block__item">
-                <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                </div>
-              </li>
-              <li className="user-block__item">
-                <a className="user-block__link">Sign out</a>
-              </li>
-            </ul>
+            <Logo />
+            <UserBlock />
           </header>
 
           <div className="film-card__wrap">
@@ -137,7 +117,7 @@ function MoviePageDetails(): JSX.Element{
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <SmallFilmCardList filmTitleList = {FILM_TITLES}/>
+          <SmallFilmCardList filmCardPropsList = {FILM_TITLES}/>
         </section>
         <Footer/>
       </div>
