@@ -19,7 +19,9 @@ type Genre = {
   isActive: boolean;
 }
 
-type GenresList = Genre[];
+type GenresList = {
+  genresList: Genre[];
+}
 
 type PrivateRouteProps = RouteProps & {isAccess?: boolean};
 

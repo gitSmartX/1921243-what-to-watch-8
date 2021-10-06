@@ -1,10 +1,9 @@
 import { GenresList } from '../../types/types';
 import CatalogGenre from '../catalog-genre/catalog-genre';
 
-function CatalogGenresList(props: any): JSX.Element{
-  const genresList: GenresList = props.catalogGenresList;
+function CatalogGenresList({genresList}: GenresList): JSX.Element{
   const listItems: JSX.Element[] = genresList.map((item) =>
-    <CatalogGenre key = {item.name} data = {item} />,
+    <CatalogGenre key = {item.name} name = {item.name} isActive = {item.isActive} />,
   );
   return(
     <ul className="catalog__genres-list">

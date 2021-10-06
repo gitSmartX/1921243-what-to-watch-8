@@ -59,7 +59,7 @@ function Main(props:any): JSX.Element{
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <CatalogGenresList catalogGenresList = {CATALOG_GENRES_LIST} />
+          <CatalogGenresList genresList = {CATALOG_GENRES_LIST} />
 
           <SmallFilmCardList filmTitleList = {FILM_TITLES}/>
 

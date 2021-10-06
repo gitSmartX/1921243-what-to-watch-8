@@ -32,48 +32,50 @@ const FILM_TITLES: string[] = [
 const MIN_RATE_STARS = 1;
 const MAX_RATE_STARS = 10;
 
-const CATALOG_GENRES_LIST: GenresList = [
-  {
-    name: 'All genres',
-    isActive: true,
-  },
-  {
-    name: 'Comedies',
-    isActive: false,
-  },
-  {
-    name: 'Crime',
-    isActive: false,
-  },
-  {
-    name: 'Documentary',
-    isActive: false,
-  },
-  {
-    name: 'Dramas',
-    isActive: false,
-  },
-  {
-    name: 'Horror',
-    isActive: false,
-  },
-  {
-    name: 'Kids & Family',
-    isActive: false,
-  },
-  {
-    name: 'Romance',
-    isActive: false,
-  },
-  {
-    name: 'Sci-Fi',
-    isActive: false,
-  },
-  {
-    name: 'Thrillers',
-    isActive: false,
-  },
-];
+const CATALOG_GENRES_LIST: GenresList = {
+  genresList: [
+    {
+      name: 'All genres',
+      isActive: true,
+    },
+    {
+      name: 'Comedies',
+      isActive: false,
+    },
+    {
+      name: 'Crime',
+      isActive: false,
+    },
+    {
+      name: 'Documentary',
+      isActive: false,
+    },
+    {
+      name: 'Dramas',
+      isActive: false,
+    },
+    {
+      name: 'Horror',
+      isActive: false,
+    },
+    {
+      name: 'Kids & Family',
+      isActive: false,
+    },
+    {
+      name: 'Romance',
+      isActive: false,
+    },
+    {
+      name: 'Sci-Fi',
+      isActive: false,
+    },
+    {
+      name: 'Thrillers',
+      isActive: false,
+    },
+  ],
+};
 
 enum ROUTE_PATH {
   ROOT = '/',
