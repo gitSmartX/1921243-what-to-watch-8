@@ -1,15 +1,9 @@
 import React from 'react';
 import Footer from '../footer/footer';
+import { FILM_TITLES } from '../../constants/constant';
 import Logo from '../logo/logo';
 import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
 import UserBlock from '../user-block/user-block';
-
-const FILM_TITLES: string[] = [
-  'Fantastic Beasts: The Crimes of Grindelwald',
-  'Bohemian Rhapsody',
-  'Macbeth',
-  'Aviator',
-];
 
 function MoviePageInList(): JSX.Element{
   return(
@@ -100,7 +94,7 @@ function MoviePageInList(): JSX.Element{
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <SmallFilmCardList filmTitleList={FILM_TITLES} />
+          <SmallFilmCardList filmCardPropsList={FILM_TITLES} />
         </section>
         <Footer/>
       </div>

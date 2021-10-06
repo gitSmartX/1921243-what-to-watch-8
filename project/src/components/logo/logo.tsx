@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ROUTE_PATH } from '../app/constant';
+import { ROUTE_PATH } from '../../constants/constant';
 
 function Logo(): JSX.Element{
   return(

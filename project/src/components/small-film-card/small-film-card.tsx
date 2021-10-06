@@ -1,5 +1,5 @@
 import { FilmCardProps } from '../../types/types';
-import { IMAGE_DATA } from '../app/constant';
+import { IMAGE_DATA } from '../../constants/constant';
 
 
 function SmallFilmCard({filmTitle}: FilmCardProps): JSX.Element{

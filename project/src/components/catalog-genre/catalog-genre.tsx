@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Genre } from '../../types/types';
-import { ROUTE_PATH } from '../app/constant';
+import { ROUTE_PATH } from '../../constants/constant';
 
 function CatalogGenre({name, isActive}: Genre): JSX.Element {
   if(isActive) {

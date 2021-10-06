@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from '../logo/logo';
 import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
 import type {FilmCardDate} from '../../types/types';
-import { CATALOG_GENRES_LIST, FILM_TITLES } from '../app/constant';
+import { CATALOG_GENRES_LIST, ALL_FILMS } from '../../constants/constant';
 import UserBlock from '../user-block/user-block';
 import CatalogGenresList from '../catalog-genres-list/catalog-genres-list';
 import Footer from '../footer/footer';
@@ -61,7 +61,7 @@ function Main(props:any): JSX.Element{
 
           <CatalogGenresList genresList = {CATALOG_GENRES_LIST} />
 
-          <SmallFilmCardList filmCardPropsList = {FILM_TITLES}/>
+          <SmallFilmCardList filmCardPropsList = {ALL_FILMS}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

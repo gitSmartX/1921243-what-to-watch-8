@@ -7,8 +7,8 @@ import Player from '../player/player';
 import SignInComponent from '../sign-in/sign-in';
 import ErrorNotFound from '../errors/error-not-found';
 
-import {FILM_CARD_DATA, ROUTE_PATH} from '../app/constant';
-import PrivateRoute from '../private-route/private-route';
+import {FILM_CARD_DATA, ROUTE_PATH} from '../../constants/constant';
+import PrivateRoute from '../../hooks/private-route/private-route';
 
 function App(): JSX.Element {
   return (
