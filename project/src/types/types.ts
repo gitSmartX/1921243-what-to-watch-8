@@ -1,5 +1,28 @@
 import type { RouteProps } from 'react-router-dom';
 
+type FilmData = {
+  id: number,
+  name: string,
+  posterImage: string,
+  previewImage: string,
+  backgroundImage: string,
+  backgroundColor: string,
+  videoLink: string,
+  previewVideoLink: string,
+  description: string,
+  rating: number,
+  scoresCount: number,
+  director: string,
+  starring: string[],
+  runTime: number
+  genre: string,
+  released: number
+  isFavorite: boolean,
+}
+type FilmDataList = {
+  filmDataList: FilmData[];
+}
+
 type FilmCardDate = {
   title: string,
   genre: string,
@@ -25,4 +48,4 @@ type GenresList = {
 
 type PrivateRouteProps = RouteProps & {isAccess?: boolean};
 
-export type {FilmCardDate, FilmCardProps, FilmCardPropsList, Genre, GenresList, PrivateRouteProps};
+export type {FilmData, FilmDataList, FilmCardDate, FilmCardProps, FilmCardPropsList, Genre, GenresList, PrivateRouteProps};

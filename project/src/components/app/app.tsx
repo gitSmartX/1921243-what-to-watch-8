@@ -7,32 +7,43 @@ import Player from '../player/player';
 import SignInComponent from '../sign-in/sign-in';
 import ErrorNotFound from '../errors/error-not-found';
 
-import {FILM_CARD_DATA, ROUTE_PATH} from '../../constants/constant';
+import {ROUTE_PATH} from '../../constants/constant';
 import PrivateRoute from '../../hooks/private-route/private-route';
+import { FilmDataList } from '../../types/types';
+import AddReview from '../add-review/add-review';
+import MoviePageDetails from '../movie-page-details/movie-page-details';
 
-function App(): JSX.Element {
+function App({filmDataList}: FilmDataList): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route path = {ROUTE_PATH.ROOT} exact>
           <Main
-            filmCardDate = {FILM_CARD_DATA}
+            filmDataList = {filmDataList}
           />
         </Route>
         <Route path = {ROUTE_PATH.LOGIN} exact>
           <SignInComponent/>
         </Route>
-        <PrivateRoute path = {ROUTE_PATH.MYLIST} exact isAccess = {false}>
-          <MyList/>
+        <PrivateRoute path = {ROUTE_PATH.MYLIST} exact isAccess>
+          <MyList filmDataList = {filmDataList}/>
         </PrivateRoute>
         <Route path = {ROUTE_PATH.FILM_ID} exact>
-          <MoviePage/>
+          <MoviePage
+            filmDataList = {filmDataList}
+          />
+        </Route>
+        <Route path = {ROUTE_PATH.FILM_ID_DETAILS} exact>
+          <MoviePageDetails/>
         </Route>
         <Route path = {ROUTE_PATH.FILM_ID_REVIEW} exact>
           <MoviePageReviews/>
         </Route>
+        <Route path = {ROUTE_PATH.FILM_ID_ADD_REVIEW} exact>
+          <AddReview filmDataList = {filmDataList}/>
+        </Route>
         <Route path = {ROUTE_PATH.PLAYER_ID} exact>
-          <Player/>
+          <Player filmDataList = {filmDataList}/>
         </Route>
         <Route>
           <ErrorNotFound/>

@@ -1,5 +1,7 @@
 import type {FilmCardDate, FilmCardProps, Genre} from '../types/types';
 
+const SITE_NAME = 'WTW';
+
 const FILM_CARD_DATA: FilmCardDate = {
   title: 'The Grand Budapest Hotel',
   genre: 'Drama',
@@ -99,9 +101,11 @@ enum ROUTE_PATH {
   LOGIN = '/login',
   MYLIST = '/mylist',
   FILM_ID = '/films/:id',
+  FILM_ID_DETAILS = '/films/:id/details',
   FILM_ID_REVIEW = '/films/:id/review',
+  FILM_ID_ADD_REVIEW = '/films/:id/addReview',
   PLAYER_ID = '/player/:id',
-  ERROR = '/error404',
+  ERROR = '/error404'
 }
 
 enum IMAGE_DATA {
@@ -109,4 +113,24 @@ enum IMAGE_DATA {
   imgType = '.jpg',
 }
 
-export {FILM_CARD_DATA, ALL_FILMS, MAX_RATE_STARS, MIN_RATE_STARS, CATALOG_GENRES_LIST, ROUTE_PATH, IMAGE_DATA, FILM_TITLES, MY_FILMS};
+enum BUTTON_NAME {
+  ADD_REVIEW = 'Add review',
+  SHOW_MORE = 'Show more',
+  PLAY = 'Play',
+  MY_LIST = 'My list',
+}
+
+enum NAV_LINK_NAME {
+  OVERVIEW = 'Overview',
+  DETAILS = 'Details',
+  REVIEWS = 'Reviews',
+}
+
+enum PLAYER_STATE {
+  PLAY = 'Play',
+  PAUSE = 'Pause',
+  FULL_SCREEN = 'Full screen',
+  EXIT = 'Exit'
+}
+
+export {SITE_NAME, FILM_CARD_DATA, ALL_FILMS, MAX_RATE_STARS, MIN_RATE_STARS, CATALOG_GENRES_LIST, ROUTE_PATH, IMAGE_DATA,BUTTON_NAME,NAV_LINK_NAME,PLAYER_STATE, FILM_TITLES, MY_FILMS};

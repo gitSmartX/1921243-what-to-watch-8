@@ -1,9 +1,10 @@
 import React from 'react';
 import Footer from '../footer/footer';
-import { FILM_TITLES } from '../../constants/constant';
 import Logo from '../logo/logo';
 import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
 import UserBlock from '../user-block/user-block';
+import { FILM_DATA_LIST } from '../../mocks/films';
+import { SITE_NAME } from '../../constants/constant';
 
 function MoviePageInList(): JSX.Element{
   return(
@@ -14,7 +15,7 @@ function MoviePageInList(): JSX.Element{
             <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
           </div>
 
-          <h1 className="visually-hidden">WTW</h1>
+          <h1 className="visually-hidden">{SITE_NAME}</h1>
 
           <header className="page-header film-card__head">
             <Logo />
@@ -94,7 +95,7 @@ function MoviePageInList(): JSX.Element{
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <SmallFilmCardList filmCardPropsList={FILM_TITLES} />
+          <SmallFilmCardList filmDataList = {FILM_DATA_LIST}/>
         </section>
         <Footer/>
       </div>

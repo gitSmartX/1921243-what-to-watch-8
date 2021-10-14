@@ -1,17 +1,16 @@
+import { useState } from 'react';
+import { PLAYER_STATE } from '../../constants/constant';
+import { FilmDataList } from '../../types/types';
 import PlayerButton from './player-button';
 
-enum STATE {
-  Play = 'Play',
-  Pause = 'Pause'
-}
-
-function Player(): JSX.Element{
+function Player({filmDataList}: FilmDataList): JSX.Element{
+  const[isPlay, setPlay] = useState(true);
+  // eslint-disable-next-line no-console
+  console.log(isPlay);
   return(
     <div className="player">
       <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
-
-      <button type="button" className="player__exit">Exit</button>
-
+      <PlayerButton type = {PLAYER_STATE.EXIT}/>
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
@@ -22,15 +21,10 @@ function Player(): JSX.Element{
         </div>
 
         <div className="player__controls-row">
-          <PlayerButton type = {STATE.Play}/>
+          {!isPlay ? <PlayerButton type = {PLAYER_STATE.PLAY} onButtonClick = {()=> setPlay(!isPlay)}/> : <PlayerButton type = {PLAYER_STATE.PAUSE} onButtonClick = {()=> setPlay(true)}/>}
           <div className="player__name">Transpotting</div>
 
-          <button type="button" className="player__full-screen">
-            <svg viewBox="0 0 27 27" width="27" height="27">
-              <use xlinkHref="#full-screen"></use>
-            </svg>
-            <span>Full screen</span>
-          </button>
+          <PlayerButton type = {PLAYER_STATE.FULL_SCREEN}/>
         </div>
       </div>
     </div>
