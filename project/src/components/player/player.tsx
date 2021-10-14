@@ -10,7 +10,7 @@ function Player({filmDataList}: FilmDataList): JSX.Element{
   return(
     <div className="player">
       <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
-      <PlayerButton type = {PLAYER_STATE.EXIT}/>
+      <PlayerButton type = {PLAYER_STATE.EXIT} onButtonClick = {setPlay}/>
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
@@ -21,10 +21,10 @@ function Player({filmDataList}: FilmDataList): JSX.Element{
         </div>
 
         <div className="player__controls-row">
-          {!isPlay ? <PlayerButton type = {PLAYER_STATE.PLAY} onButtonClick = {()=> setPlay(!isPlay)}/> : <PlayerButton type = {PLAYER_STATE.PAUSE} onButtonClick = {()=> setPlay(true)}/>}
+          {isPlay ? <PlayerButton type = {PLAYER_STATE.PLAY} onButtonClick = {setPlay}/> : <PlayerButton type = {PLAYER_STATE.PAUSE} onButtonClick = {setPlay}/>}
           <div className="player__name">Transpotting</div>
 
-          <PlayerButton type = {PLAYER_STATE.FULL_SCREEN}/>
+          <PlayerButton type = {PLAYER_STATE.FULL_SCREEN} onButtonClick = {setPlay}/>
         </div>
       </div>
     </div>
