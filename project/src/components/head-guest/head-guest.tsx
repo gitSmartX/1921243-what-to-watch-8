@@ -1,3 +1,5 @@
+import { SITE_NAME } from '../../constants/constant';
+
 function HeadGuest(): JSX.Element{
   return(
     <section className="film-card">
@@ -6,7 +8,7 @@ function HeadGuest(): JSX.Element{
         <img src="img/bg-header.jpg" />
       </div>
 
-      <h1 className="visually-hidden">WTW</h1>
+      <h1 className="visually-hidden">{SITE_NAME}</h1>
 
       <header className="page-header">
         <div className="logo">
