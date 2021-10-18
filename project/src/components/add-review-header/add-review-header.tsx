@@ -1,14 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ROUTE_PATH, SITE_NAME } from '../../constants/constant';
 import { FilmData } from '../../types/types';
 import Logo from '../logo/logo';
 import UserBlock from '../user-block/user-block';
 
 function AddReviewHeader(filmData: FilmData): JSX.Element{
-  const newTo = {
-    pathname: ROUTE_PATH.FILM_ID.replace(':id', filmData.id.toString()),
-    state: {...filmData},
-  };
+  const id = filmData.id.toString();
   return(
     <div className="film-card__header">
       <div className="film-card__bg">
@@ -20,10 +17,10 @@ function AddReviewHeader(filmData: FilmData): JSX.Element{
         <nav className="breadcrumbs">
           <ul className="breadcrumbs__list">
             <li className="breadcrumbs__item">
-              <NavLink to={newTo} className="breadcrumbs__link">{filmData.name}</NavLink>
+              <Link to={ROUTE_PATH.FILM_ID.replace(':id', id)} className="breadcrumbs__link">{filmData.name}</Link>
             </li>
             <li className="breadcrumbs__item">
-              <a className="breadcrumbs__link">Add review</a>
+              <Link to={ROUTE_PATH.FILM_ID_ADD_REVIEW.replace(':id', id)} className="breadcrumbs__link">Add review</Link>
             </li>
           </ul>
         </nav>

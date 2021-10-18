@@ -22,8 +22,6 @@ function SmallFilmCard(filmData: FilmData): JSX.Element{
       <h3 className="small-film-card__title">
         <Link to={newTo}
           className="small-film-card__link"
-          // eslint-disable-next-line no-console
-          onClick={() => setFilmId(filmId)}
         >
           {filmData.name}
         </Link>

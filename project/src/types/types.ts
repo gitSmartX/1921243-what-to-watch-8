@@ -46,6 +46,39 @@ type GenresList = {
   genresList: Genre[];
 }
 
+type ReviewType = {
+  id: number,
+  user: {
+    id: number,
+    name: string,
+  },
+  rating: number,
+  comment: string,
+  date: Date,
+}
+
+type ReviewsList = {
+  reviewsList: ReviewType[];
+};
+
+type ReviewPost = {
+  rating: number,
+  comment: string,
+}
+
+type User = {
+  email: string,
+  password: string
+}
+
+type AuthInfo = {
+  id: number,
+  email: string,
+  name: string,
+  'avatar_url': string,
+  token: string
+}
+
 type PrivateRouteProps = RouteProps & {isAccess?: boolean};
 
-export type {FilmData, FilmDataList, FilmCardDate, FilmCardProps, FilmCardPropsList, Genre, GenresList, PrivateRouteProps};
+export type {FilmData, FilmDataList, FilmCardDate, FilmCardProps, FilmCardPropsList, Genre, GenresList, PrivateRouteProps, ReviewType, ReviewsList, ReviewPost, User, AuthInfo};

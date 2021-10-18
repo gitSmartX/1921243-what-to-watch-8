@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { PLAYER_STATE } from '../../constants/constant';
+import { PLAYER_BUTTON_TYPE } from '../../constants/constant';
 import { FilmDataList } from '../../types/types';
 import PlayerButton from './player-button';
 
@@ -10,7 +10,7 @@ function Player({filmDataList}: FilmDataList): JSX.Element{
   return(
     <div className="player">
       <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
-      <PlayerButton type = {PLAYER_STATE.EXIT} onButtonClick = {setPlay}/>
+      <PlayerButton type = {PLAYER_BUTTON_TYPE.EXIT} onButtonClick = {setPlay}/>
       <div className="player__controls">
         <div className="player__controls-row">
           <div className="player__time">
@@ -21,10 +21,10 @@ function Player({filmDataList}: FilmDataList): JSX.Element{
         </div>
 
         <div className="player__controls-row">
-          {isPlay ? <PlayerButton type = {PLAYER_STATE.PLAY} onButtonClick = {setPlay}/> : <PlayerButton type = {PLAYER_STATE.PAUSE} onButtonClick = {setPlay}/>}
+          {isPlay ? <PlayerButton type = {PLAYER_BUTTON_TYPE.PLAY} onButtonClick = {setPlay}/> : <PlayerButton type = {PLAYER_BUTTON_TYPE.PAUSE} onButtonClick = {setPlay}/>}
           <div className="player__name">Transpotting</div>
 
-          <PlayerButton type = {PLAYER_STATE.FULL_SCREEN} onButtonClick = {setPlay}/>
+          <PlayerButton type = {PLAYER_BUTTON_TYPE.FULL_SCREEN} onButtonClick = {setPlay}/>
         </div>
       </div>
     </div>

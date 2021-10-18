@@ -12,8 +12,11 @@ import PrivateRoute from '../../hooks/private-route/private-route';
 import { FilmDataList } from '../../types/types';
 import AddReview from '../add-review/add-review';
 import MoviePageDetails from '../movie-page-details/movie-page-details';
+import { REVIEWS } from '../../mocks/reviews';
 
 function App({filmDataList}: FilmDataList): JSX.Element {
+  // eslint-disable-next-line prefer-const
+  let reviewsList = REVIEWS;
   return (
     <BrowserRouter>
       <Switch>
@@ -26,7 +29,9 @@ function App({filmDataList}: FilmDataList): JSX.Element {
           <SignInComponent/>
         </Route>
         <PrivateRoute path = {ROUTE_PATH.MYLIST} exact isAccess>
-          <MyList filmDataList = {filmDataList}/>
+          <MyList
+            filmDataList = {filmDataList}
+          />
         </PrivateRoute>
         <Route path = {ROUTE_PATH.FILM_ID} exact>
           <MoviePage
@@ -34,16 +39,26 @@ function App({filmDataList}: FilmDataList): JSX.Element {
           />
         </Route>
         <Route path = {ROUTE_PATH.FILM_ID_DETAILS} exact>
-          <MoviePageDetails/>
+          <MoviePageDetails
+            filmDataList = {filmDataList}
+          />
         </Route>
         <Route path = {ROUTE_PATH.FILM_ID_REVIEW} exact>
-          <MoviePageReviews/>
+          <MoviePageReviews
+            filmDataList = {filmDataList}
+            reviewsList = {reviewsList}
+          />
         </Route>
         <Route path = {ROUTE_PATH.FILM_ID_ADD_REVIEW} exact>
-          <AddReview filmDataList = {filmDataList}/>
+          <AddReview
+            filmDataList = {filmDataList}
+            reviewsList = {reviewsList}
+          />
         </Route>
         <Route path = {ROUTE_PATH.PLAYER_ID} exact>
-          <Player filmDataList = {filmDataList}/>
+          <Player
+            filmDataList = {filmDataList}
+          />
         </Route>
         <Route>
           <ErrorNotFound/>

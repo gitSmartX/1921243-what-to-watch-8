@@ -5,8 +5,13 @@ import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
 import UserBlock from '../user-block/user-block';
 import { FILM_DATA_LIST } from '../../mocks/films';
 import { SITE_NAME } from '../../constants/constant';
+import { useParams } from 'react-router-dom';
+import { FilmDataList } from '../../types/types';
+import FilmCardHero from '../film-card/film-card-hero';
 
-function MoviePageInList(): JSX.Element{
+function MoviePageInList({filmDataList}: FilmDataList): JSX.Element{
+  const {id} = useParams<{id: string}>();
+  const filmData  = filmDataList.filter((data) => data.id.toString() === id)[0];
   return(
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -22,31 +27,7 @@ function MoviePageInList(): JSX.Element{
             <UserBlock />
           </header>
 
-          <div className="film-card__wrap">
-            <div className="film-card__desc">
-              <h2 className="film-card__title">The Grand Budapest Hotel</h2>
-              <p className="film-card__meta">
-                <span className="film-card__genre">Drama</span>
-                <span className="film-card__year">2014</span>
-              </p>
-
-              <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 18 14" width="18" height="14">
-                    <use xlinkHref="#in-list"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
-                <a href="add-review.html" className="btn film-card__button">Add review</a>
-              </div>
-            </div>
-          </div>
+          <FilmCardHero {...filmData}/>
         </div>
 
         <div className="film-card__wrap film-card__translate-top">

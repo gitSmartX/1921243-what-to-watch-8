@@ -1,21 +1,14 @@
-type ReviewData = {
-  text: string;
-  author: string;
-  date: string;
-  datetime: string;
-  rating: number;
-}
+import { ReviewType } from '../../types/types';
 
-function Review(props:any): JSX.Element{
-  const reviewData:ReviewData = props.reviewData;
+function Review(reviewData: ReviewType): JSX.Element{
   return(
     <div className="review">
       <blockquote className="review__quote">
-        <p className="review__text">{reviewData.text}</p>
+        <p className="review__text">{reviewData.comment}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{reviewData.author}</cite>
-          <time className="review__date" dateTime={reviewData.datetime}>{reviewData.date}</time>
+          <cite className="review__author">{reviewData.user.name}</cite>
+          <time className="review__date" >{reviewData.date.toLocaleDateString()}</time>
         </footer>
       </blockquote>
 
