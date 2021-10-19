@@ -1,5 +1,7 @@
 import type {FilmCardDate, FilmCardProps, Genre} from '../types/types';
 
+const SITE_NAME = 'WTW';
+
 const FILM_CARD_DATA: FilmCardDate = {
   title: 'The Grand Budapest Hotel',
   genre: 'Drama',
@@ -48,7 +50,7 @@ const MY_FILMS: FilmCardProps[] = [
   {filmTitle: 'Shutter Island'},
 ];
 
-const MIN_RATE_STARS = 1;
+const MIN_RATE_STARS = 0;
 const MAX_RATE_STARS = 10;
 
 const CATALOG_GENRES_LIST: Genre[] = [
@@ -99,9 +101,11 @@ enum ROUTE_PATH {
   LOGIN = '/login',
   MYLIST = '/mylist',
   FILM_ID = '/films/:id',
+  FILM_ID_DETAILS = '/films/:id/details',
   FILM_ID_REVIEW = '/films/:id/review',
+  FILM_ID_ADD_REVIEW = '/films/:id/addReview',
   PLAYER_ID = '/player/:id',
-  ERROR = '/error404',
+  ERROR = '/error404'
 }
 
 enum IMAGE_DATA {
@@ -109,4 +113,32 @@ enum IMAGE_DATA {
   imgType = '.jpg',
 }
 
-export {FILM_CARD_DATA, ALL_FILMS, MAX_RATE_STARS, MIN_RATE_STARS, CATALOG_GENRES_LIST, ROUTE_PATH, IMAGE_DATA, FILM_TITLES, MY_FILMS};
+enum BUTTON_NAME {
+  ADD_REVIEW = 'Add review',
+  SHOW_MORE = 'Show more',
+  PLAY = 'Play',
+  MY_LIST = 'My list',
+}
+
+enum NAV_LINK_NAME {
+  OVERVIEW = 'Overview',
+  DETAILS = 'Details',
+  REVIEWS = 'Reviews',
+}
+
+enum PLAYER_BUTTON_TYPE {
+  PLAY = 'Play',
+  PAUSE = 'Pause',
+  FULL_SCREEN = 'Full screen',
+  EXIT = 'Exit'
+}
+
+enum RATING_LEVEL {
+  BAD = 'Bad',
+  NORMAL = 'Normal',
+  GOOD = 'Good',
+  VERY_GOOD = 'Very good',
+  AWESOME = 'Awesome'
+}
+
+export {SITE_NAME, FILM_CARD_DATA, ALL_FILMS, MAX_RATE_STARS, MIN_RATE_STARS, CATALOG_GENRES_LIST, FILM_TITLES, MY_FILMS, ROUTE_PATH, IMAGE_DATA,BUTTON_NAME,NAV_LINK_NAME,PLAYER_BUTTON_TYPE, RATING_LEVEL};
