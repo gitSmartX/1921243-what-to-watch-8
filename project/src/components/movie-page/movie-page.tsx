@@ -7,13 +7,14 @@ import { FilmDataList } from '../../types/types';
 import FilmCardHero from '../film-card/film-card-hero';
 import { NAV_LINK_NAME} from '../../constants/constant';
 import FilmCardNavigation from '../film-card-navigation/film-card-navigation';
-import getRatingLevel from '../../hooks/helpers/helpers';
+import {getRatingLevel} from '../../hooks/helpers/helpers';
 
 function MoviePage({filmDataList}: FilmDataList): JSX.Element{
   const {id} = useParams<{id: string}>();
   const filmData  = filmDataList.filter((data) => data.id.toString() === id)[0];
+  const filmDataMoreLikeList = filmData && filmDataList.filter((data) => data.genre === filmData.genre);
   // eslint-disable-next-line no-console
-  console.log(filmData);
+  console.log(filmDataMoreLikeList);
   return(
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -48,13 +49,14 @@ function MoviePage({filmDataList}: FilmDataList): JSX.Element{
         </div>
       </section>
 
-      <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
-          <SmallFilmCardList filmDataList = {filmDataList}/>
-        </section>
-        <Footer/>
-      </div>
+      {filmDataMoreLikeList &&
+        <div className="page-content">
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
+            <SmallFilmCardList filmDataList = {filmDataMoreLikeList}/>
+          </section>
+          <Footer/>
+        </div>};
     </React.Fragment>
   );
 }

@@ -11,6 +11,8 @@ import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
 function MoviePageDetails({filmDataList}: FilmDataList): JSX.Element{
   const {id} = useParams<{id: string}>();
   const filmData  = filmDataList.filter((data) => data.id.toString() === id)[0];
+  const filmDataMoreLikeList = filmData && filmDataList.filter((data) => data.genre === filmData.genre);
+  console.error(filmDataMoreLikeList);
   return(
     <React.Fragment>
       <section className="film-card film-card--full">
@@ -58,14 +60,15 @@ function MoviePageDetails({filmDataList}: FilmDataList): JSX.Element{
           </div>
         </div>
       </section>
+      {filmDataMoreLikeList &&
+        <div className="page-content">
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
+            <SmallFilmCardList filmDataList = {filmDataMoreLikeList}/>
+          </section>
+          <Footer/>
+        </div>};
 
-      <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
-          <SmallFilmCardList filmDataList = {filmDataList}/>
-        </section>
-        <Footer/>
-      </div>
     </React.Fragment>
   );
 }
