@@ -3,20 +3,13 @@ import { Genre } from '../../types/types';
 import { ROUTE_PATH } from '../../constants/constant';
 
 function CatalogGenre({name, isActive}: Genre): JSX.Element {
-  if(isActive) {
-    return(
-      <li className="catalog__genres-item catalog__genres-item--active">
-        <Link to={ROUTE_PATH.ROOT} className="catalog__genres-link">{name}</Link>
-      </li>
-    );
-  }
-  else {
-    return(
-      <li className="catalog__genres-item">
-        <Link to={ROUTE_PATH.ROOT} className="catalog__genres-link">{name}</Link>
-      </li>
-    );
-  }
+
+  return(
+    <li className={`catalog__genres-item ${isActive ? 'catalog__genres-item--active': ''}`}>
+      <Link to={ROUTE_PATH.ROOT} className="catalog__genres-link">{name}</Link>
+    </li>
+  );
+
 }
 
 export default CatalogGenre;

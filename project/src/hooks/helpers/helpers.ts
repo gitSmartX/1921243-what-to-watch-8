@@ -1,4 +1,4 @@
-import { RATING_LEVEL } from '../../constants/constant';
+import { IMAGE_DATA, RATING_LEVEL } from '../../constants/constant';
 
 function getRatingLevel(rating: number): string {
   if(rating < 3){
@@ -16,4 +16,9 @@ function getRatingLevel(rating: number): string {
   return RATING_LEVEL.AWESOME;
 }
 
-export default getRatingLevel;
+//Fantastic Beasts: The Crimes of Grindelwald
+function getImgName(name: string): string{
+  return IMAGE_DATA.imgSource + name.replaceAll(':','').split(' ').join('-').toLowerCase() + IMAGE_DATA.imgType;
+}
+
+export {getRatingLevel, getImgName};
