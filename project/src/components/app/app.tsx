@@ -21,9 +21,7 @@ function App({filmDataList}: FilmDataList): JSX.Element {
     <BrowserRouter>
       <Switch>
         <Route path = {ROUTE_PATH.ROOT} exact>
-          <Main
-            filmDataList = {filmDataList}
-          />
+          <Main />
         </Route>
         <Route path = {ROUTE_PATH.LOGIN} exact>
           <SignInComponent/>
