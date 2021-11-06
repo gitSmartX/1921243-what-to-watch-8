@@ -14,13 +14,9 @@ function SmallFilmCard(filmData: FilmData): JSX.Element{
   useEffect(() => {
     if(isMouseEnter) {
       const timeout = setTimeout(()=> setPlaying(true), 1000);
-      // eslint-disable-next-line no-console
-      console.log('setTimer');
       setTimer(timeout);
     }
     setPlaying(false);
-    // eslint-disable-next-line no-console
-    console.log('clearTimer');
     timer && clearTimeout(timer as number);
   }, [isMouseEnter]);
 

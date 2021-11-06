@@ -1,4 +1,4 @@
-import type {FilmCardDate, FilmCardProps, Genre} from '../types/types';
+import type {FilmCardDate, FilmCardProps} from '../types/types';
 
 const SITE_NAME = 'WTW';
 
@@ -53,48 +53,18 @@ const MY_FILMS: FilmCardProps[] = [
 const MIN_RATE_STARS = 0;
 const MAX_RATE_STARS = 10;
 
-const CATALOG_GENRES_LIST: Genre[] = [
-  {
-    name: 'All genres',
-    isActive: false,
-  },
-  {
-    name: 'Comedies',
-    isActive: true,
-  },
-  {
-    name: 'Crime',
-    isActive: false,
-  },
-  {
-    name: 'Documentary',
-    isActive: false,
-  },
-  {
-    name: 'Dramas',
-    isActive: false,
-  },
-  {
-    name: 'Horror',
-    isActive: false,
-  },
-  {
-    name: 'Kids & Family',
-    isActive: false,
-  },
-  {
-    name: 'Romance',
-    isActive: false,
-  },
-  {
-    name: 'Sci-Fi',
-    isActive: false,
-  },
-  {
-    name: 'Thrillers',
-    isActive: false,
-  },
-];
+enum GENRES_LIST {
+  ALL = 'All genres',
+  COMEDY = 'Comedies',
+  CRIME = 'Crime',
+  DOC = 'Documentary',
+  DRAMA = 'Dramas',
+  HORROR = 'Horror',
+  KIDS_FAMILY = 'Kids & Family',
+  ROMANCE = 'Romance',
+  SCI_FI = 'Sci-Fi',
+  THRILLERS = 'Thrillers',
+}
 
 enum ROUTE_PATH {
   ROOT = '/',
@@ -146,4 +116,4 @@ enum FILM_CARD_IMAGE {
   HEIGHT = 175
 }
 
-export {SITE_NAME, FILM_CARD_DATA, ALL_FILMS, MAX_RATE_STARS, MIN_RATE_STARS, CATALOG_GENRES_LIST, FILM_TITLES, MY_FILMS, ROUTE_PATH, IMAGE_DATA,BUTTON_NAME,NAV_LINK_NAME,PLAYER_BUTTON_TYPE, RATING_LEVEL, FILM_CARD_IMAGE};
+export {SITE_NAME, FILM_CARD_DATA, ALL_FILMS, MAX_RATE_STARS, MIN_RATE_STARS, GENRES_LIST, FILM_TITLES, MY_FILMS, ROUTE_PATH, IMAGE_DATA,BUTTON_NAME,NAV_LINK_NAME,PLAYER_BUTTON_TYPE, RATING_LEVEL, FILM_CARD_IMAGE};

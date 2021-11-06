@@ -9,16 +9,10 @@ type VideoPlayerPreviewProps = Pick<FilmData, 'posterImage' | 'previewVideoLink'
 
 function VideoPlayerPreview({posterImage, previewVideoLink, isPlaying}: VideoPlayerPreviewProps ): JSX.Element{
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  // eslint-disable-next-line no-console
-  console.log('initialazeComponent');
   if(isPlaying) {
-    // eslint-disable-next-line no-console
-    console.log('PlayVideo');
     videoRef.current?.play();
   }
   if(!isPlaying){
-    // eslint-disable-next-line no-console
-    console.log('LoadVideo');
     videoRef.current?.load();
   }
 
