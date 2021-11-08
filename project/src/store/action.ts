@@ -6,9 +6,16 @@ export const getFilmsList = () => ({
   payload: FILM_DATA_LIST,
 } as const);
 
-export const getFilmsListByGenre = (genre: string) => ({
+export const setDisplayFilmsCount = () => ({
+  type: Actions.SetDisplayFilmsCount,
+} as const);
+
+export const resetDisplayFilmsCount = () => ({
+  type: Actions.ResetDisplayFilmsCount,
+} as const);
+
+export const getFilmsListByGenre = () => ({
   type: Actions.GetFilmsListByGenre,
-  payload: FILM_DATA_LIST.filter((film) => film.genre === genre),
 } as const);
 
 export const setActiveGenre = (genre: string) => ({

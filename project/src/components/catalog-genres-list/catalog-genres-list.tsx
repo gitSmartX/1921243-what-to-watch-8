@@ -2,11 +2,7 @@ import { GENRES_LIST } from '../../constants/constant';
 import {FilmDataList} from '../../types/types';
 import CatalogGenre from '../catalog-genre/catalog-genre';
 
-type CatalogGenresListProps = {
-  activeGenre: string;
-} & FilmDataList;
-
-function CatalogGenresList({activeGenre, filmDataList}: CatalogGenresListProps): JSX.Element{
+function CatalogGenresList({filmDataList}: FilmDataList): JSX.Element{
   const genreList: string[]  = [GENRES_LIST.ALL];
 
   filmDataList.forEach((film) => {
@@ -16,7 +12,7 @@ function CatalogGenresList({activeGenre, filmDataList}: CatalogGenresListProps):
   });
 
   const listItems: JSX.Element[] = genreList.map((genre) =>
-    <CatalogGenre key = {genre} name = {genre} isActive = { genre === activeGenre } />,
+    <CatalogGenre key = {genre} name = {genre}/>,
   );
   return(
     <ul className="catalog__genres-list">

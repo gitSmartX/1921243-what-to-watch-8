@@ -1,28 +1,39 @@
 import React from 'react';
 import Logo from '../logo/logo';
 import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
-import { BUTTON_NAME, GENRES_LIST, SITE_NAME} from '../../constants/constant';
+import {GENRES_LIST, SITE_NAME} from '../../constants/constant';
 import UserBlock from '../user-block/user-block';
 import CatalogGenresList from '../catalog-genres-list/catalog-genres-list';
 import Footer from '../footer/footer';
 import FilmCard from '../film-card/film-card';
+import { Dispatch } from 'redux';
 
 import { State } from '../../types/state';
 import { connect, ConnectedProps } from 'react-redux';
+import { ActionType } from '../../types/action';
+import { setDisplayFilmsCount } from '../../store/action';
+import { ShowMore } from '../show-more/show-more';
 
-const mapStateToProps = ({activeGenre, filmsList}: State) => ({
+const mapStateToProps = ({activeGenre, filmsList, filmsDisplayCount}: State) => ({
   activeGenre,
   filmsList,
+  filmsDisplayCount,
 });
 
-const connector = connect(mapStateToProps);
+const mapDispatchToProps = (dispatch: Dispatch<ActionType>) => ({
+  onShowMore() {
+    dispatch(setDisplayFilmsCount());
+  },
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>
 
 function Main(props: PropsFromRedux): JSX.Element{
-  const {activeGenre, filmsList} = props;
+  const {activeGenre, filmsList,filmsDisplayCount, onShowMore} = props;
   const filmData = filmsList[0];
   const filmsListByGenre = activeGenre === GENRES_LIST.ALL ? filmsList : filmsList.filter((film) => film.genre === activeGenre);
-
+  const filmsDisplayList = filmsListByGenre.slice(0, filmsDisplayCount);
   return (
     <React.Fragment>
       <section className="film-card">
@@ -40,13 +51,10 @@ function Main(props: PropsFromRedux): JSX.Element{
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <CatalogGenresList filmDataList = {filmsList} activeGenre = {activeGenre}/>
+          <CatalogGenresList filmDataList = {filmsList} />
 
-          <SmallFilmCardList filmDataList = {filmsListByGenre} />
-
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">{BUTTON_NAME.SHOW_MORE}</button>
-          </div>
+          <SmallFilmCardList filmDataList = {filmsDisplayList} />
+          {filmsListByGenre.length > filmsDisplayCount ? <ShowMore onShowMore = {onShowMore}/> : null}
         </section>
 
         <Footer/>

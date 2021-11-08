@@ -39,7 +39,6 @@ type FilmCardPropsList = {
 
 type Genre = {
   name: string;
-  isActive: boolean;
 }
 
 type GenresList = {
