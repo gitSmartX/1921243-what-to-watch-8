@@ -29,6 +29,10 @@ export const reducer = (state: State = initialState, action: ActionType): State 
       };
     case Actions.SetActiveGenre:
       return {...state, activeGenre: action.payload};
+    case Actions.LoadFilmList: {
+      const filmsList = action.payload;
+      return {...state, filmsList};
+    }
     default:
       return state;
   }

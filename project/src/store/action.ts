@@ -1,5 +1,6 @@
 import { FILM_DATA_LIST } from '../mocks/films';
 import { Actions } from '../types/action';
+import { FilmDataList } from '../types/types';
 
 export const getFilmsList = () => ({
   type: Actions.GetFilmsList,
@@ -21,4 +22,9 @@ export const getFilmsListByGenre = () => ({
 export const setActiveGenre = (genre: string) => ({
   type: Actions.SetActiveGenre,
   payload: genre,
+} as const);
+
+export const loadFilmList = (filmsList: FilmDataList) => ({
+  type: Actions.LoadFilmList,
+  payload: filmsList.filmDataList,
 } as const);
