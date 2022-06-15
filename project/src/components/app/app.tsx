@@ -1,24 +1,36 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import {Router as BrowserRouter, Route, Switch } from 'react-router-dom';
 import Main from '../main/main';
-import MoviePageReviews from '../movie-page-reviews/movie-page-reviews';
 import MoviePage from '../movie-page/movie-page';
 import MyList from '../my-list/my-list';
 import Player from '../player/player';
 import SignInComponent from '../sign-in/sign-in';
 import ErrorNotFound from '../errors/error-not-found';
-
-import {ROUTE_PATH} from '../../constants/constant';
 import PrivateRoute from '../../hooks/private-route/private-route';
-import { FilmDataList } from '../../types/types';
 import AddReview from '../add-review/add-review';
-import MoviePageDetails from '../movie-page-details/movie-page-details';
-import { REVIEWS } from '../../mocks/reviews';
+import { State } from '../../types/state';
+import { connect, ConnectedProps } from 'react-redux';
+import Loading from '../loading/loading';
+import browserHistory from '../../browser-history';
+import { NAV_LINK_NAME, ROUTE_PATH } from '../../constants/constant';
 
-function App({filmDataList}: FilmDataList): JSX.Element {
-  // eslint-disable-next-line prefer-const
-  let reviewsList = REVIEWS;
+const mapStateToProps = ({authorizationStatus, isDataLoaded, filmsList}:State) => ({
+  authorizationStatus,
+  isDataLoaded,
+  filmDataList: filmsList,
+});
+
+const connector = connect(mapStateToProps);
+
+type ProprsFromRedux = ConnectedProps<typeof connector>;
+
+function App({authorizationStatus, isDataLoaded, filmDataList}: ProprsFromRedux): JSX.Element {
+  if (!isDataLoaded){
+    return (
+      <Loading/>
+    );
+  }
   return (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route path = {ROUTE_PATH.ROOT} exact>
           <Main />
@@ -26,32 +38,22 @@ function App({filmDataList}: FilmDataList): JSX.Element {
         <Route path = {ROUTE_PATH.LOGIN} exact>
           <SignInComponent/>
         </Route>
-        <PrivateRoute path = {ROUTE_PATH.MYLIST} exact isAccess>
+        <PrivateRoute path = {ROUTE_PATH.MYLIST} exact>
           <MyList
-            filmDataList = {filmDataList}
+            filmDataList = {filmDataList.filter((obj) => obj.isFavorite)}
           />
         </PrivateRoute>
         <Route path = {ROUTE_PATH.FILM_ID} exact>
-          <MoviePage
-            filmDataList = {filmDataList}
-          />
+          <MoviePage navLink = {NAV_LINK_NAME.OVERVIEW}/>
         </Route>
         <Route path = {ROUTE_PATH.FILM_ID_DETAILS} exact>
-          <MoviePageDetails
-            filmDataList = {filmDataList}
-          />
+          <MoviePage navLink = {NAV_LINK_NAME.DETAILS}/>
         </Route>
         <Route path = {ROUTE_PATH.FILM_ID_REVIEW} exact>
-          <MoviePageReviews
-            filmDataList = {filmDataList}
-            reviewsList = {reviewsList}
-          />
+          <MoviePage navLink = {NAV_LINK_NAME.REVIEWS}/>
         </Route>
         <Route path = {ROUTE_PATH.FILM_ID_ADD_REVIEW} exact>
-          <AddReview
-            filmDataList = {filmDataList}
-            reviewsList = {reviewsList}
-          />
+          <AddReview/>
         </Route>
         <Route path = {ROUTE_PATH.PLAYER_ID} exact>
           <Player
@@ -66,4 +68,6 @@ function App({filmDataList}: FilmDataList): JSX.Element {
   );
 }
 
-export default App;
+export {App};
+
+export default connector(App);

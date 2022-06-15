@@ -5,7 +5,7 @@ import {GENRES_LIST, SITE_NAME} from '../../constants/constant';
 import UserBlock from '../user-block/user-block';
 import CatalogGenresList from '../catalog-genres-list/catalog-genres-list';
 import Footer from '../footer/footer';
-import FilmCard from '../film-card/film-card';
+import FilmCardMain from '../film-card/film-card-main';
 import { Dispatch } from 'redux';
 
 import { State } from '../../types/state';
@@ -45,7 +45,7 @@ function Main(props: PropsFromRedux): JSX.Element{
           <Logo />
           <UserBlock />
         </header>
-        <FilmCard {...filmData}/>
+        <FilmCardMain {...filmData}/>
       </section>
       <div className="page-content">
         <section className="catalog">

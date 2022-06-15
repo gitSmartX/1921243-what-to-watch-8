@@ -1,39 +1,33 @@
-import { BUTTON_NAME } from '../../constants/constant';
-import { FilmData } from '../../types/types';
+import { connect, ConnectedProps } from 'react-redux';
+import { State } from '../../types/state';
+import FilmCardDesc from './film-card-desc';
+import FilmCardHero from './film-card-hero';
 
-function FilmCard(filmData: FilmData): JSX.Element{
-  return(
-    <div className="film-card__wrap">
-      <div className="film-card__info">
-        <div className="film-card__poster">
-          <img src={filmData.posterImage} alt= {`${filmData.name} poster`} width="218" height="327" />
-        </div>
+const mapStateToProps = ({filmData}:State) => ({
+  filmData: filmData,
+});
 
-        <div className="film-card__desc">
-          <h2 className="film-card__title">{filmData.name}</h2>
-          <p className="film-card__meta">
-            <span className="film-card__genre">{filmData.genre}</span>
-            <span className="film-card__year">{filmData.released}</span>
-          </p>
+const connector = connect(mapStateToProps);
 
-          <div className="film-card__buttons">
-            <button className="btn btn--play film-card__button" type="button">
-              <svg viewBox="0 0 19 19" width="19" height="19">
-                <use xlinkHref="#play-s"></use>
-              </svg>
-              <span>{BUTTON_NAME.PLAY}</span>
-            </button>
-            <button className="btn btn--list film-card__button" type="button">
-              <svg viewBox="0 0 19 20" width="19" height="20">
-                <use xlinkHref="#add"></use>
-              </svg>
-              <span>{BUTTON_NAME.MY_LIST}</span>
-            </button>
+type ProprsFromRedux = ConnectedProps<typeof connector>;
+
+
+function FilmCard({filmData}: ProprsFromRedux): JSX.Element {
+  return (
+    <section className="film-card film-card--full">
+      <FilmCardHero/>
+
+      <div className="film-card__wrap film-card__translate-top">
+        <div className="film-card__info">
+          <div className="film-card__poster film-card__poster--big">
+            <img src={filmData.posterImage} alt= {`${filmData.name} poster`} width="218" height="327" />
           </div>
+          <FilmCardDesc/>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
-export default FilmCard;
+export {FilmCard};
+export default connector(FilmCard);

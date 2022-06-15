@@ -8,7 +8,7 @@ function Review(reviewData: ReviewType): JSX.Element{
 
         <footer className="review__details">
           <cite className="review__author">{reviewData.user.name}</cite>
-          <time className="review__date" >{reviewData.date.toLocaleDateString()}</time>
+          <time className="review__date" >{new Date(reviewData.date).toLocaleDateString()}</time>
         </footer>
       </blockquote>
 

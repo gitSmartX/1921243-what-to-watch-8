@@ -1,7 +1,7 @@
 import { FilmData } from '../types/types';
 
 const FILM_DATA_LIST: FilmData[] = [{
-  id: 1,
+  id: '1',
   name: 'The Grand Budapest Hotel',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -20,7 +20,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 2,
+  id: '2',
   name: 'Fantastic Beasts: The Crimes of Grindelwald',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -39,7 +39,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 3,
+  id: '3',
   name: 'Bohemian Rhapsody',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -58,7 +58,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 4,
+  id: '4',
   name: 'Macbeth',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -77,7 +77,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 5,
+  id: '5',
   name: 'Aviator',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -96,7 +96,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 6,
+  id: '6',
   name: 'We need to talk about Kevin',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -115,7 +115,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 7,
+  id: '7',
   name: 'What We Do in the Shadows',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -134,7 +134,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 8,
+  id: '8',
   name: 'Revenant',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -153,7 +153,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 9,
+  id: '9',
   name: 'The Grand Budapest Hotel',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -172,7 +172,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 10,
+  id: '10',
   name: 'Fantastic Beasts: The Crimes of Grindelwald',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -191,7 +191,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 11,
+  id: '11',
   name: 'Bohemian Rhapsody',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -210,7 +210,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 12,
+  id: '12',
   name: 'Macbeth',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -229,7 +229,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 13,
+  id: '13',
   name: 'Aviator',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -248,7 +248,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 14,
+  id: '14',
   name: 'We need to talk about Kevin',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -267,7 +267,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 15,
+  id: '15',
   name: 'What We Do in the Shadows',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',
@@ -286,7 +286,7 @@ const FILM_DATA_LIST: FilmData[] = [{
   isFavorite: false,
 },
 {
-  id: 16,
+  id: '16',
   name: 'Revenant',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewImage: 'img/the-grand-budapest-hotel.jpg',

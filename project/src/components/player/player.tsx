@@ -1,15 +1,19 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { PLAYER_BUTTON_TYPE } from '../../constants/constant';
 import { FilmDataList } from '../../types/types';
 import PlayerButton from './player-button';
 
 function Player({filmDataList}: FilmDataList): JSX.Element{
   const[isPlay, setPlay] = useState(true);
+  const {id} = useParams<{id: string}>();
+  const filmData  = filmDataList.filter((data) => data.id.toString() === id)[0];
+
   // eslint-disable-next-line no-console
-  console.log(isPlay);
+  console.log(filmData);
   return(
     <div className="player">
-      <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+      <video src={filmData.videoLink} className="player__video" poster="img/player-poster.jpg"></video>
       <PlayerButton type = {PLAYER_BUTTON_TYPE.EXIT} onButtonClick = {setPlay}/>
       <div className="player__controls">
         <div className="player__controls-row">

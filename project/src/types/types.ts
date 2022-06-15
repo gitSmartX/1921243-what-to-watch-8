@@ -1,7 +1,9 @@
+/* eslint-disable camelcase */
 import type { RouteProps } from 'react-router-dom';
+import { Token } from '../services/token';
 
 type FilmData = {
-  id: number,
+  id: string,
   name: string,
   posterImage: string,
   previewImage: string,
@@ -14,11 +16,32 @@ type FilmData = {
   scoresCount: number,
   director: string,
   starring: string[],
-  runTime: number
+  runTime: number,
   genre: string,
-  released: number
+  released: number,
   isFavorite: boolean,
 }
+
+export type FilmDataResponse = {
+  id: string,
+  name: string,
+  poster_image: string,
+  preview_image: string,
+  background_image: string,
+  background_color: string,
+  video_link: string,
+  preview_video_link: string,
+  description: string,
+  rating: number,
+  scores_count: number,
+  director: string,
+  starring: string[],
+  run_time: number,
+  genre: string,
+  released: number,
+  is_favorite: boolean,
+}
+
 type FilmDataList = {
   filmDataList: FilmData[];
 }
@@ -60,7 +83,7 @@ type ReviewsList = {
   reviewsList: ReviewType[];
 };
 
-type ReviewPost = {
+type CommentPost = {
   rating: number,
   comment: string,
 }
@@ -70,14 +93,23 @@ type User = {
   password: string
 }
 
-type AuthInfo = {
-  id: number,
+type AuthData = {
+  email: string,
+  password: string,
+}
+
+type UserData = {
+  id: string,
   email: string,
   name: string,
-  'avatar_url': string,
-  token: string
+  avatarUrl: string,
+  token: Token,
+}
+
+type IdString = {
+  id: string
 }
 
 type PrivateRouteProps = RouteProps & {isAccess?: boolean};
 
-export type {FilmData, FilmDataList, FilmCardDate, FilmCardProps, FilmCardPropsList, Genre, GenresList, PrivateRouteProps, ReviewType, ReviewsList, ReviewPost, User, AuthInfo};
+export type {FilmData, FilmDataList, FilmCardDate, FilmCardProps, FilmCardPropsList, Genre, GenresList, PrivateRouteProps, ReviewType, ReviewsList, CommentPost, User, UserData, AuthData, IdString};

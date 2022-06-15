@@ -1,59 +1,55 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../footer/footer';
 import SmallFilmCardList from '../small-film-card-list/small-film-card-list';
 
 import { useParams} from 'react-router-dom';
-import { FilmDataList } from '../../types/types';
-import FilmCardHero from '../film-card/film-card-hero';
-import { NAV_LINK_NAME} from '../../constants/constant';
-import FilmCardNavigation from '../film-card-navigation/film-card-navigation';
-import {getRatingLevel} from '../../hooks/helpers/helpers';
+import { ThunkAppDispatch } from '../../types/action';
+import { fetchFilmByIdAction, fetchFilmsListSimilarAction, fetchReviewListAction } from '../../store/api-actions';
+import { connect, ConnectedProps } from 'react-redux';
+import { State } from '../../types/state';
+import { setActiveNavLink } from '../../store/action';
+import { NAV_LINK_NAME } from '../../constants/constant';
+import FilmCard from '../film-card/film-card';
 
-function MoviePage({filmDataList}: FilmDataList): JSX.Element{
+const mapStateToProps = ({filmData, filmsListSimilar}:State) => ({
+  filmData: filmData,
+  filmsListSimilar: filmsListSimilar,
+});
+
+const mapDispatchToProps = (dispatch: ThunkAppDispatch) => ({
+  getFilmDataById (id: string){
+    dispatch(fetchFilmByIdAction(id));
+    dispatch(fetchFilmsListSimilarAction(id));
+    dispatch(fetchReviewListAction(id));
+  },
+  onChangeNavLink (navLink: NAV_LINK_NAME) {
+    dispatch(setActiveNavLink(navLink));
+  },
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type ProprsFromRedux = ConnectedProps<typeof connector> & {navLink: NAV_LINK_NAME};
+
+function MoviePage({filmsListSimilar, getFilmDataById,onChangeNavLink, filmData, navLink}: ProprsFromRedux): JSX.Element{
   const {id} = useParams<{id: string}>();
-  const filmData  = filmDataList.filter((data) => data.id.toString() === id)[0];
-  const filmDataMoreLikeList = filmData && filmDataList.filter((data) => data.genre === filmData.genre);
-  // eslint-disable-next-line no-console
-  console.log(filmDataMoreLikeList);
+  useEffect( () => {
+    onChangeNavLink(navLink);
+  }, [navLink]);
+
+  useEffect( () => {
+    getFilmDataById(id);
+  }, [id]);
+
   return(
     <React.Fragment>
-      <section className="film-card film-card--full">
-        <FilmCardHero {...filmData}/>
+      <FilmCard/>
 
-        <div className="film-card__wrap film-card__translate-top">
-          <div className="film-card__info">
-            <div className="film-card__poster film-card__poster--big">
-              <img src={filmData.posterImage} alt= {`${filmData.name} poster`} width="218" height="327" />
-            </div>
-
-            <div className="film-card__desc">
-              <FilmCardNavigation id = {id} activeNavLink = {NAV_LINK_NAME.OVERVIEW}/>
-
-              <div className="film-rating">
-                <div className="film-rating__score">{filmData.rating}</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">{getRatingLevel(filmData.rating)}</span>
-                  <span className="film-rating__count">{`${filmData.scoresCount} ratings`}</span>
-                </p>
-              </div>
-
-              <div className="film-card__text">
-                <p>{filmData.description}</p>
-
-                <p className="film-card__director"><strong>Director: {filmData.director}</strong></p>
-
-                <p className="film-card__starring"><strong>Starring: {filmData.starring.join(', ')}</strong></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {filmDataMoreLikeList &&
+      {filmsListSimilar &&
         <div className="page-content">
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
-            <SmallFilmCardList filmDataList = {filmDataMoreLikeList}/>
+            <SmallFilmCardList filmDataList = {filmsListSimilar}/>
           </section>
           <Footer/>
         </div>};
@@ -61,4 +57,5 @@ function MoviePage({filmDataList}: FilmDataList): JSX.Element{
   );
 }
 
-export default MoviePage;
+export {MoviePage};
+export default connector(MoviePage);

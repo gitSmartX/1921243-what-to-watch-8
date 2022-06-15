@@ -1,10 +1,21 @@
+import { connect, ConnectedProps } from 'react-redux';
 import { Link} from 'react-router-dom';
-import { BUTTON_NAME, ROUTE_PATH, SITE_NAME } from '../../constants/constant';
-import { FilmData } from '../../types/types';
+import { AUTH_STATUS, BUTTON_NAME, ROUTE_PATH, SITE_NAME } from '../../constants/constant';
+import { State } from '../../types/state';
 import Logo from '../logo/logo';
 import UserBlock from '../user-block/user-block';
 
-function FilmCardHero(filmData: FilmData): JSX.Element{
+const mapStateToProps = ({authorizationStatus, filmData, userData}: State) => ({
+  authorizationStatus,
+  userData,
+  filmData,
+});
+
+const connector = connect(mapStateToProps);
+
+type ProprsFromRedux = ConnectedProps<typeof connector>;
+
+function FilmCardHero({authorizationStatus, filmData, userData}: ProprsFromRedux): JSX.Element{
   const id = filmData.id.toString();
   return(
     <div className="film-card__hero">
@@ -39,12 +50,15 @@ function FilmCardHero(filmData: FilmData): JSX.Element{
               </svg>
               <span>{BUTTON_NAME.MY_LIST}</span>
             </Link>
-            <Link to={ROUTE_PATH.FILM_ID_ADD_REVIEW.replace(':id', id)} className="btn film-card__button">{BUTTON_NAME.ADD_REVIEW}</Link>
+            {authorizationStatus === AUTH_STATUS.AUTH && userData.id !== '' ?
+              <Link to={ROUTE_PATH.FILM_ID_ADD_REVIEW.replace(':id', id)} className="btn film-card__button">{BUTTON_NAME.ADD_REVIEW}</Link> :
+              ''}
           </div>
         </div>
       </div>
     </div>
   );
 }
+export {FilmCardHero};
 
-export default FilmCardHero;
+export default connector(FilmCardHero);

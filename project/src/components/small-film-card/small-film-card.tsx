@@ -1,6 +1,6 @@
 import { FilmData } from '../../types/types';
 import { ROUTE_PATH } from '../../constants/constant';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import VideoPlayerPreview from '../video-player-preview/video-player-preview';
 

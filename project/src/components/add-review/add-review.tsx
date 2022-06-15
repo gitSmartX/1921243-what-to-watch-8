@@ -1,33 +1,53 @@
 import React, { ChangeEvent, useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { connect, ConnectedProps } from 'react-redux';
+import { NavLink, useParams } from 'react-router-dom';
 import { MAX_RATE_STARS, MIN_RATE_STARS, ROUTE_PATH } from '../../constants/constant';
-import { FilmData, ReviewType } from '../../types/types';
+import { postComment } from '../../store/api-actions';
+import { ThunkAppDispatch } from '../../types/action';
+import { State } from '../../types/state';
 import AddReviewHeader from '../add-review-header/add-review-header';
 
-type AddReviewsProps = {
-  filmDataList: FilmData[];
-  reviewsList: ReviewType[];
-}
+const mapStateToProps = ({filmData,reviewList}:State) => ({
+  filmData: filmData,
+  reviewList: reviewList,
+});
 
-function AddReview({filmDataList, reviewsList}: AddReviewsProps): JSX.Element{
+const mapDispatchToProps = (dispatch: ThunkAppDispatch) => ({
+  onSubmitPost (e: React.MouseEvent<HTMLElement>,filmId: string, reviewRaiting: number, reviewComment: string) {
+    if(reviewComment.length < 20) {
+      e.preventDefault();
+      // eslint-disable-next-line no-alert
+      alert('Warning');
+      return;
+    }
+    dispatch(postComment(filmId, {
+      'rating': reviewRaiting,
+      'comment': reviewComment,
+    }));
+  },
+});
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type ProprsFromRedux = ConnectedProps<typeof connector>;
+
+function AddReview({filmData,reviewList, onSubmitPost}: ProprsFromRedux): JSX.Element{
   const [reviewRaiting, setReviewRaitng] = useState(MIN_RATE_STARS);
   const [reviewComment, setReviewComment] = useState('');
 
-  const history = useHistory();
-  const filmId = history.location.pathname.split('/')[2]; //маска пути '/films/:id'
-  const filmData  = filmDataList.filter((data) => data.id.toString() === filmId)[0];
+  const {id} = useParams<{id: string}>(); //маска пути '/films/:id'
   const rateStarsJSX = [];
   for (let i = MAX_RATE_STARS; i > MIN_RATE_STARS; i--){
     const value:string = i.toString();
     rateStarsJSX.push(
       <React.Fragment key = {i}>
-        <input className="rating__input" id={`star-${value}`} type="radio" name="rating" value= {i}/>
+        <input className="rating__input" id={`star-${value}`} type="radio" name="rating" defaultValue= {i}/>
         <label className="rating__label" htmlFor={`star-${value}`}>{`Rating ${value}`}</label>
       </React.Fragment>,
     );
   }
   // eslint-disable-next-line no-console
-  console.log(filmData, reviewRaiting, reviewsList);
+  console.log(filmData, reviewRaiting, reviewList, id);
   return(
     <section className="film-card film-card--full">
       <AddReviewHeader {...filmData}/>
@@ -57,22 +77,10 @@ function AddReview({filmDataList, reviewsList}: AddReviewsProps): JSX.Element{
             </textarea>
             <div className="add-review__submit">
               <NavLink
-                to = {ROUTE_PATH.FILM_ID_REVIEW.replace(':id', filmId)}
+                to = {ROUTE_PATH.FILM_ID_REVIEW.replace(':id', id)}
                 className="add-review__btn"
                 type="submit"
-                onClick = {() => {
-                  const review: ReviewType = {
-                    id: reviewsList.length + 1,
-                    'user': {
-                      'id': 1,
-                      'name': 'Kate Muir',
-                    },
-                    'rating': reviewRaiting,
-                    'comment': reviewComment,
-                    'date': new Date(),
-                  };
-                  reviewsList.push(review);
-                }}
+                onClick = {(e) => onSubmitPost(e, id, reviewRaiting ,reviewComment)}
               >
                 Post
               </NavLink>
@@ -84,4 +92,4 @@ function AddReview({filmDataList, reviewsList}: AddReviewsProps): JSX.Element{
   );
 }
 
-export default AddReview;
+export default connector(AddReview);

@@ -1,14 +1,14 @@
 import type {FilmCardDate, FilmCardProps} from '../types/types';
 
-const SITE_NAME = 'WTW';
+export const SITE_NAME = 'WTW';
 
-const FILM_CARD_DATA: FilmCardDate = {
+export const FILM_CARD_DATA: FilmCardDate = {
   title: 'The Grand Budapest Hotel',
   genre: 'Drama',
   year: 2014,
 };
 
-const ALL_FILMS: FilmCardProps[] = [
+export const ALL_FILMS: FilmCardProps[] = [
   {filmTitle: 'Fantastic Beasts: The Crimes of Grindelwald'},
   {filmTitle: 'Bohemian Rhapsody'},
   {filmTitle: 'Macbeth'},
@@ -31,14 +31,14 @@ const ALL_FILMS: FilmCardProps[] = [
   {filmTitle: 'Midnight Special'},
 ];
 
-const FILM_TITLES: FilmCardProps[] = [
+export const FILM_TITLES: FilmCardProps[] = [
   {filmTitle: 'Fantastic Beasts: The Crimes of Grindelwald'},
   {filmTitle: 'Bohemian Rhapsody'},
   {filmTitle: 'Macbeth'},
   {filmTitle: 'Aviator'},
 ];
 
-const MY_FILMS: FilmCardProps[] = [
+export const MY_FILMS: FilmCardProps[] = [
   {filmTitle: 'Fantastic Beasts: The Crimes of Grindelwald'},
   {filmTitle: 'Bohemian Rhapsody'},
   {filmTitle: 'Macbeth'},
@@ -50,11 +50,11 @@ const MY_FILMS: FilmCardProps[] = [
   {filmTitle: 'Shutter Island'},
 ];
 
-const MIN_RATE_STARS = 0;
-const MAX_RATE_STARS = 10;
-const DISPLAY_FILMS_NUM = 8;
+export const MIN_RATE_STARS = 0;
+export const MAX_RATE_STARS = 10;
+export const DISPLAY_FILMS_NUM = 8;
 
-enum GENRES_LIST {
+export enum GENRES_LIST {
   ALL = 'All genres',
   COMEDY = 'Comedies',
   CRIME = 'Crime',
@@ -67,7 +67,7 @@ enum GENRES_LIST {
   THRILLERS = 'Thrillers',
 }
 
-enum ROUTE_PATH {
+export enum ROUTE_PATH {
   ROOT = '/',
   LOGIN = '/login',
   MYLIST = '/mylist',
@@ -79,32 +79,32 @@ enum ROUTE_PATH {
   ERROR = '/error404'
 }
 
-enum IMAGE_DATA {
+export enum IMAGE_DATA {
   imgSource = 'img/',
   imgType = '.jpg',
 }
 
-enum BUTTON_NAME {
+export enum BUTTON_NAME {
   ADD_REVIEW = 'Add review',
   SHOW_MORE = 'Show more',
   PLAY = 'Play',
   MY_LIST = 'My list',
 }
 
-enum NAV_LINK_NAME {
+export enum NAV_LINK_NAME {
   OVERVIEW = 'Overview',
   DETAILS = 'Details',
   REVIEWS = 'Reviews',
 }
 
-enum PLAYER_BUTTON_TYPE {
+export enum PLAYER_BUTTON_TYPE {
   PLAY = 'Play',
   PAUSE = 'Pause',
   FULL_SCREEN = 'Full screen',
   EXIT = 'Exit'
 }
 
-enum RATING_LEVEL {
+export enum RATING_LEVEL {
   BAD = 'Bad',
   NORMAL = 'Normal',
   GOOD = 'Good',
@@ -112,9 +112,24 @@ enum RATING_LEVEL {
   AWESOME = 'Awesome'
 }
 
-enum FILM_CARD_IMAGE {
+export enum FILM_CARD_IMAGE {
   WIDTH = 280,
   HEIGHT = 175
 }
 
-export {DISPLAY_FILMS_NUM, SITE_NAME, FILM_CARD_DATA, ALL_FILMS, MAX_RATE_STARS, MIN_RATE_STARS, GENRES_LIST, FILM_TITLES, MY_FILMS, ROUTE_PATH, IMAGE_DATA,BUTTON_NAME,NAV_LINK_NAME,PLAYER_BUTTON_TYPE, RATING_LEVEL, FILM_CARD_IMAGE};
+export enum AUTH_STATUS {
+  AUTH = 'Auth',
+  NO_AUTH = 'No Auth',
+  UNKNOWN = 'Unknown',
+}
+
+export enum API_ROUTE {
+  FILMS = '/films',
+  FILM = '/films/:id',
+  FILM_SIMILAR = '/films/:id/similar',
+  LOGIN = '/login',
+  LOGOUT = '/logout',
+  PROMO = '/promo',
+  FAVORITE = '/favorite',
+  COMMENTS = '/comments/:id'
+}
