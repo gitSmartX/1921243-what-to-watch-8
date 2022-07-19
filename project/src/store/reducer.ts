@@ -68,7 +68,7 @@ export const reducer = (state: State = initialState, action: ActionType): State 
       return {...state, authorizationStatus: AUTH_STATUS.NO_AUTH};
     }
     case Actions.SetUserData: {
-      return {...state, userData: action.payload};
+      return {...state, userData: action.payload ? action.payload : {id: '', email: '', name: '', avatarUrl: '', token: ''}};
     }
     case Actions.LoadReviewList: {
       return {...state, reviewList: action.payload};

@@ -40,8 +40,11 @@ export const postComment = (id: string, comment: CommentPost): ThunkActionResult
 
 export const checkAuthAction = (): ThunkActionResult =>
   async (dispatch, _getState, api): Promise<void> => {
+    console.log('start');
     await api.get<UserData>(API_ROUTE.LOGIN)
       .then(({data})=> {
+        console.log('response');
+        console.log(data);
         dispatch(setUserData(data));
         dispatch(requareAuthorization(AUTH_STATUS.AUTH));
       });
